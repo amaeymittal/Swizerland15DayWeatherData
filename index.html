@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital@1&display=swap" rel="stylesheet">
+    <title></title>
+</head>
+<body>
+    <h1 style="font-family: 'Source Sans Pro', sans-serif;text-align:center;">Swizerland <br/>15 Day Weather Data</h1>
+    <div width="50" height="50">
+        <canvas id="TempChart"></canvas>
+    </div>
+    <p id="RainComent" style="font-family: 'Source Sans Pro', sans-serif; color: #3be36d;"></p>
+    <div width="50" height="50">
+        <canvas id="RainChart"></canvas>
+    </div>
+    <p id="TempComent" style="font-family: 'Source Sans Pro', sans-serif; color: #31a6f5;"></p>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const TempData = [20, 19, 23, 25, 20, 24, 28, 30, 30, 31, 30, 28, 27, 29, 30]
+    const RainData = [93,5, 24, 74, 82, 21, 16, 11, 24, 24, 38, 40, 24, 24, 24]
+     // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    var ctx1 = document.getElementById('TempChart').getContext('2d');
+    var myChart = new Chart(ctx1, {
+        type: 'line',
+        data: {
+            labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7", "Day 8", "Day 9", "Day 10", "Day 11", "Day 12", "Day 13", "Day 14", "Day 15"],
+            datasets: [{
+                label: 'Temprature',
+                data: TempData,
+                borderColor: "#3be36d"
+            }]
+        }
+    });
+    document.getElementById("RainComent").innerHTML = "The most warm day is <b>Day 10</b> which is about <b>31 celcius.</b><br> The most cold day was <b>Day 2</b> Which was <b>19 celcius.</b><br> The pleasent day was <b>Day 4</b> at <b>25 Celcius.</b><br>The rest of the data is in the graph"
+    // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    var ctx2 = document.getElementById('RainChart').getContext('2d');
+    var mynewChart = new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7", "Day 8", "Day 9", "Day 10", "Day 11", "Day 12", "Day 13", "Day 14", "Day 15"],
+            datasets: [{
+                label: 'Rain Chances',
+                data: RainData,
+                borderColor: "#31a6f5"
+            }]
+        }
+    });
+    document.getElementById("TempComent").innerHTML = "The most chance of rain was <b>Day 1</b> which is about <b>93%.</b><br> The least chance of rain was <b>Day 2</b> Which was <b>5%</b><br> The rest of the data is in the graph"
+</script>
+</html>
